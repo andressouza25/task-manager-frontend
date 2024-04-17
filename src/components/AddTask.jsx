@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import axios from "axios";
 import { useAlert } from "react-alert";
 
 import CustomInput from "./CustomInput";
@@ -26,7 +26,7 @@ const AddTask = ({ fetchTasks }) => {
             }
 
             await axios.post(
-                "https://santos-task-manager.up.railway.app/tasks",
+                `https://santos-task-manager.up.railway.app/tasks`,
                 {
                     description: task,
                     isCompleted: false,
@@ -36,7 +36,9 @@ const AddTask = ({ fetchTasks }) => {
             await fetchTasks();
 
             setTask("");
-        } catch (error) {
+
+            await alert.success("A tarefa foi adicionada com sucesso!");
+        } catch (_e) {
             alert.error("Algo deu errado.");
         }
     };
@@ -47,8 +49,9 @@ const AddTask = ({ fetchTasks }) => {
                 label="Adicionar tarefa..."
                 value={task}
                 onChange={onChange}
+                onEnterPress={handleTaskAddition}
             />
-            <CustomButton onclick={handleTaskAddition}>
+            <CustomButton onClick={handleTaskAddition}>
                 <FaPlus size={14} color="#ffffff" />
             </CustomButton>
         </div>
