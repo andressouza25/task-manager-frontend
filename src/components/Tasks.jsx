@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useAlert } from "react-alert";
 
 import "./Tasks.scss";
 import TaskItem from "./TaskItem";
@@ -7,6 +8,7 @@ import AddTask from "./AddTask";
 
 const Tasks = () => {
     const [tasks, setTasks] = useState([]);
+    const alert = useAlert();
 
     const fetchTasks = async () => {
         try {
@@ -14,8 +16,8 @@ const Tasks = () => {
                 "https://santos-task-manager.up.railway.app/tasks"
             );
             setTasks(data);
-        } catch (error) {
-            console.log(error);
+        } catch (_error) {
+            alert.error("Não foi possível recuperar as tarefas.");
         }
     };
 
