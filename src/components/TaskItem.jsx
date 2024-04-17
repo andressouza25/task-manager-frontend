@@ -14,7 +14,23 @@ const TaskItem = ({ task, fetchTasks }) => {
             );
 
             await fetchTasks();
-            alert.success("A tarefa fio removida com sucesso!");
+            alert.success("A tarefa foi removida com sucesso!");
+        } catch (error) {
+            alert.error("Algo deu errado");
+        }
+    };
+
+    const handleTaskCompletionChange = async (e) => {
+        try {
+            await axios.patch(
+                `https://santos-task-manager.up.railway.app/tasks/${task._id}`,
+                {
+                    isCompleted: e.target.checked,
+                }
+            );
+
+            await fetchTasks();
+            alert.success("A tarefa foi motifiada com sucesso!");
         } catch (error) {
             alert.error("Algo deu errado");
         }
@@ -34,6 +50,7 @@ const TaskItem = ({ task, fetchTasks }) => {
                     <input
                         type="checkbox"
                         defaultChecked={task.isCompleted}
+                        onChange={(e) => handleTaskCompletionChange(e)}
                     ></input>
                     <span
                         className={
