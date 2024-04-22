@@ -1,39 +1,39 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
-import axios from "axios";
-import { useAlert } from "react-alert";
+import { useState, useEffect, useMemo, useCallback } from 'react'
+import axios from 'axios'
+import { useAlert } from 'react-alert'
 
-import "./Tasks.scss";
-import TaskItem from "./TaskItem";
-import AddTask from "./AddTask";
+import './Tasks.scss'
+import TaskItem from './TaskItem'
+import AddTask from './AddTask'
 
 const Tasks = () => {
-    const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([])
 
-    const alert = useAlert();
+  const alert = useAlert()
 
-    const fetchTasks = useCallback(async () => {
-        try {
-            const { data } = await axios.get(
-                "https://santos-task-manager.up.railway.app/tasks"
-            );
-            setTasks(data);
-        } catch (_error) {
-            alert.error("Não foi possível recuperar as tarefas.");
-        }
-    }, [alert]);
+  const fetchTasks = useCallback(async () => {
+    try {
+      const { data } = await axios.get(
+        'https://santos-task-manager.up.railway.app/tasks'
+      )
+      setTasks(data)
+    } catch (_error) {
+      alert.error('Não foi possível recuperar as tarefas.')
+    }
+  }, [alert])
 
-    const lastTask = useMemo(() => {
-        return tasks.filter((task) => task.isCompleted === false);
-    }, [tasks]);
+  const lastTask = useMemo(() => {
+    return tasks.filter((task) => task.isCompleted === false)
+  }, [tasks])
 
-    const completedTasks = useMemo(() => {
-        return tasks.filter((task) => task.isCompleted === true);
-    }, [tasks]);
+  const completedTasks = useMemo(() => {
+    return tasks.filter((task) => task.isCompleted === true)
+  }, [tasks])
 
-    useEffect(() => {
-        fetchTasks();
-    }, [fetchTasks]);
-    return (
+  useEffect(() => {
+    fetchTasks()
+  }, [fetchTasks])
+  return (
         <div className="tasks-container">
             <h2>Minhas Tarefas</h2>
 
@@ -64,7 +64,7 @@ const Tasks = () => {
                 </div>
             </div>
         </div>
-    );
-};
+  )
+}
 
-export default Tasks;
+export default Tasks
