@@ -25,7 +25,7 @@ const AddTask = ({ fetchTasks }) => {
         )
       }
 
-      await axios.post('https://santos-task-manager.up.railway.app/tasks', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/tasks`, {
         description: task,
         isCompleted: false
       })
