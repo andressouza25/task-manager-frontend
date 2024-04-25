@@ -1,8 +1,8 @@
-@mixin shrinkLabel {
-  top: -14px;
-  font-size: 12px;
-  color: #00ffa3;
-}
+// @mixin shrinkLabel {
+//   top: -14px;
+//   font-size: 12px;
+//   color: #00ffa3;
+// }
 
 .custom-input-container {
   position: relative;
@@ -25,7 +25,9 @@
     }
 
     &:focus ~ .custom-input-label {
-      @include shrinkLabel();
+      top: -14px;
+      font-size: 12px;
+      color: #00ffa3;
     }
   }
 
@@ -40,7 +42,9 @@
     transition: 300ms ease all;
 
     &.shrink {
-      @include shrinkLabel();
+      top: -14px;
+      font-size: 12px;
+      color: #00ffa3;
     }
   }
 }
