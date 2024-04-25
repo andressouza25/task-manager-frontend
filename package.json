@@ -48,6 +48,9 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/sass": "^1.45.0",
+    "@types/sass-loader": "^8.0.8",
+    "@types/webpack": "^5.28.5",
     "eslint": "^8.0.1",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.25.2",
@@ -57,6 +60,8 @@
     "git-commit-msg-linter": "^5.0.7",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "prettier-config-standard": "^7.0.0"
+    "prettier-config-standard": "^7.0.0",
+    "sass-loader": "^14.2.1",
+    "webpack": "^5.91.0"
   }
 }
