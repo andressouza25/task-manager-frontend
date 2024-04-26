@@ -1,38 +1,39 @@
-// @mixin shrinkLabel {
-//   top: -14px;
-//   font-size: 12px;
-//   color: #00ffa3;
-// }
+$sub-color: #666;
+$main-color: #00ffa3;
+
+@mixin shrinkLabel {
+  top: -14px;
+  font-size: 12px;
+  color: $main-color;
+}
 
 .custom-input-container {
   position: relative;
 
   .custom-input {
     background: none;
-    color: #666;
+    color: $sub-color;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
     width: 100%;
     border: none;
     border-radius: 0;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid $sub-color;
     transition: all 0.5s ease;
 
     &:focus {
       outline: none;
-      border-bottom: 1px solid #00ffa3;
+      border-bottom: 1px solid $main-color;
     }
 
     &:focus ~ .custom-input-label {
-      top: -14px;
-      font-size: 12px;
-      color: #00ffa3;
+      @include shrinkLabel();
     }
   }
 
   .custom-input-label {
-    color: #666;
+    color: $sub-color;
     font-size: 16px;
     font-weight: normal;
     position: absolute;
@@ -42,9 +43,7 @@
     transition: 300ms ease all;
 
     &.shrink {
-      top: -14px;
-      font-size: 12px;
-      color: #00ffa3;
+      @include shrinkLabel();
     }
   }
 }
